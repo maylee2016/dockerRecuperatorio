@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./server
+    command: python app.py
+    volumes:
+      - ./server/:/usr/src/app/
+    ports:
+      - 81:5000
+    env_file:
+      - ./.env.dev
+  vuejs:
+    container_name: vuejs
+    hostname: vuejs
+    build: ./client
+    ports:
+      - "80:80"
